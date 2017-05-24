@@ -6,7 +6,7 @@ import codecs
 input="kanna.txt"
 output="kanna_out.txt"
 amount=3
-spacing=56
+spacing=20
 maxtrim=100
 
 amount=sys.argv[1] if len(sys.argv)>1 and sys.argv[1].isdigit() else amount
