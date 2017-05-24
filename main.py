@@ -21,6 +21,7 @@ for i in readline:
     maxtrim = len(i)-len(i.lstrip()) if len(i)-len(i.lstrip()) > maxtrim else maxtrim
 for i in readline:
   with codecs.open(output,'a','utf-8') as f2:
-    i=i[0:(len(i)-2)]+maxtrim * ' ' + i[len(i)-1]
+    i=i[0:(len(i)-1)]+maxtrim * ' ' + i[len(i)-1]
     trimlen = len(i) - len(i.lstrip())
     f2.write(trimlen*' '+i[trimlen:(trimlen+int(spacing))]*int(amount)+i[trimlen:].rstrip()+i[len(i)-1])
+## todo: after LINE57, fix the hair
