@@ -34,8 +34,8 @@ for i in readline:
             while headno <= amount:
                 pointer=0
                 while pointer < len(i):
-                    if content[trimlen+headno*spacing+pointer] is ' ' and i[pointer:pointer+1] is not ' ':
-                        content=content[0:trimlen+headno*spacing+pointer-1]+i[pointer:pointer+1]+content[trimlen+headno*spacing+pointer:]
+                    if content[trimlen+headno*spacing+pointer] == ' ' and i[pointer] != ' ':
+                        content=content[0:trimlen+headno*spacing+pointer-1]+i[pointer]+content[trimlen+headno*spacing+pointer:]
                     pointer+=1
                 headno+=1
             f2.write(content.rstrip()+i[len(i)-1:])
