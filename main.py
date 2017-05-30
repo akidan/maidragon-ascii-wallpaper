@@ -33,7 +33,7 @@ for i in readline:
             i=i.lstrip()
             while headno <= amount:
                 pointer=0
-                while pointer < len(i):
+                while pointer < len(i)-1:
                     if content[trimlen+headno*spacing+pointer] == ' ' and i[pointer] != ' ':
                         content=content[0:trimlen+headno*spacing+pointer-1]+i[pointer]+content[trimlen+headno*spacing+pointer:]
                     pointer+=1
