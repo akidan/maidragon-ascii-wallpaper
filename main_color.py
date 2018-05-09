@@ -41,7 +41,6 @@ for i in readline:
             color_matrix = [0] * (len(content) * headno)
             while headno <= amount:
                 # create a matrix for color mapping
-                print(content)
                 for j in range(0,len(content)):
                     if content[j] != ' ' or (content[j] == ' ' and color_matrix[j]>0):
                         color_matrix[j] = color_matrix[j]+1
@@ -52,13 +51,20 @@ for i in readline:
                         content=content[0:trimlen+headno*spacing+pointer-1]+i[pointer]+content[trimlen+headno*spacing+pointer:]
                     pointer+=1
                 headno+=1
+            # create a matrix for color mapping
+            for j in range(0,len(content)):
+                if content[j] != ' ' or (content[j] == ' ' and color_matrix[j]>0):
+                    color_matrix[j] = color_matrix[j]+1
             #print(color_matrix[:200])
             content = content.rstrip()+i[len(i)-1:-1]
             newContent = ''
+            last_color = -1
             for j in range(0,len(content)):
-                if (content[j] == ' '):
+                if j==0 or content[j]==' ' or color_matrix[j]%len(color_hash) == last_color:
                     newContent = newContent + content[j]
                 else:
-                    newContent = newContent + color_prefix + str(color_hash[(amount - color_matrix[j])%len(color_hash)]) + color_suffix + content[j]
+                    newContent = newContent + color_prefix + str(color_hash[(amount - color_matrix[j]+1)%len(color_hash)]) + color_suffix + content[j]
+                if color_matrix[j] != 0 and color_matrix[j]%len(color_hash)!=last_color:
+                    last_color = color_matrix[j]%len(color_hash)
             f2.write(newContent+'\x1b[0m\n')
         line+=1;
